@@ -4,6 +4,10 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
+.hide {
+    display: none;
+}
+
 main, header {
     margin: 5vh 10vw;
 }
@@ -92,6 +96,30 @@ button {
 
 /* -----Cart----- */
 
+#cart-products::before {
+    content: '';
+    border: transparent solid 16px;
+    border-bottom: solid #000 16px;
+    position: relative;
+    top: -2.7rem;
+    left: 15.8rem;
+    z-index: -1;
+}
+
+#cart-products {
+    border: 1px solid #000;
+    border-radius: 0.5rem;
+    background-color: #fff;
+    top: 59px;
+    right: 0rem;
+    left: -16rem;
+    position: absolute;
+    padding: 10px;
+    text-align: left;
+}
+
+
+
 #cart-button {
     background: none;
     border: none;
@@ -112,6 +140,10 @@ button {
 #cart-button img {
     max-width: 32px;
     max-height: 32px;
+}
+
+#cart-button:hover {
+    background-color: rgb(170, 170, 255);
 }
 
 
