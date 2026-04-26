@@ -146,6 +146,11 @@ button {
   display: none;
 }
 
+.photo_of_buy {
+    max-width: 32px;
+    max-height: 32px;
+}
+
 
 /* -----Responsive----- */
 

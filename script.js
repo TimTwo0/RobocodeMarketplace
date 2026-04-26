@@ -2,9 +2,13 @@ let productsGrid = document.getElementById('products-grid');
 let productsArray = [];
 let url = 'https://my-json-server.typicode.com/RobocodeSchool/marketplace';
 let cartProd = document.getElementById("cart-products");
+let cart = []
 
-
-
+if(localStorage.getItem('cart')) {
+    cart = JSON.parse(localStorage.getItem('cart'));
+    drawCartProducts();
+    
+}
 function openCart(){
     cartProd.classList.toggle('hide')
 }
@@ -24,7 +28,7 @@ fetch(url + '/products')
                 <p class='product-price'><b>Price: </b>${p.price}$</p>
                 <p class='product-description'><b>Description: </b>${p.description}</p>
                 <a href='userProfile.html?id=${p.author_id}'>Seller profile</a>
-                <button>Buy</button>
+                <button onclick="addProductToCart(${p.id})">Buy</button>
             `;
             productsGrid.append(pElem);
         });
@@ -42,6 +46,12 @@ function addProductToCart(id) {
     })
     cart.push(product);
     drawCartProducts();
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    document.getElementById('cart-button').classList.add('active');
+    setTimeout(function() {
+        document.getElementById('cart-button').classList.remove('active');
+    }, 500);
 }
 
 
@@ -51,7 +61,7 @@ function drawCartProducts() {
     let sum = 0;
     cart.forEach(function(p) {
         cartProd.innerHTML += `
-        <p><img src="${p.photo_url}"> ${p.name} | ${p.price}$</p>
+        <p><img class="photo_of_buy" src="${p.photo_url}"> ${p.name} | ${p.price}$</p>
         <hr>
         `;
         sum += p.price;
