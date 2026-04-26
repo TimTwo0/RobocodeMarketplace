@@ -4,10 +4,6 @@
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.hide {
-    display: none;
-}
-
 main, header {
     margin: 5vh 10vw;
 }
@@ -146,7 +142,9 @@ button {
     background-color: rgb(170, 170, 255);
 }
 
-
+.hide {
+  display: none;
+}
 
 
 /* -----Responsive----- */
