@@ -2,26 +2,11 @@ let productsGrid = document.getElementById('products-grid');
 let productsArray = [];
 let url = 'https://my-json-server.typicode.com/RobocodeSchool/marketplace';
 let cartProd = document.getElementById("cart-products");
-let productsArray
-let cart = []
+
 
 
 function openCart(){
     cartProd.classList.toggle('hide')
-}
-
-
-.then(async function (response) {
-    let products = await response.json()
-})
-
-
-function addProductToCart(id) {
-    let product = productsArray.find(function(p) {
-        return p.id == id;
-    })
-    cart.push(product);
-    drawCartProducts();
 }
 
 
@@ -44,6 +29,20 @@ fetch(url + '/products')
             productsGrid.append(pElem);
         });
     })
+
+
+    .then(async function (response) {
+    let products = await response.json()
+})
+
+
+function addProductToCart(id) {
+    let product = productsArray.find(function(p) {
+        return p.id == id;
+    })
+    cart.push(product);
+    drawCartProducts();
+}
 
 
 function drawCartProducts() {
